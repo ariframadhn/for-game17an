@@ -43,11 +43,12 @@ function halamanCover() {
 
 function setAwal() {
   game.hero = setSprite(dataGambar.idle, 32, 32);
-  game.hero.x = 800;
-  game.hero.y = 269;
   game.skalaSprite = 2;
-  game.lantai = 300;
-  game.lompat = false;
+  game.hero.animDiam = dataGambar.idle;
+  game.hero.animLompat = dataGambar.jump;
+  game.hero.animJalan = dataGambar.run;
+  game.hero.animJatuh = dataGambar.fall;
+  game.hero.animMati = dataGambar.hit;
 }
 
 function gameLoop() {
