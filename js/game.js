@@ -49,42 +49,25 @@ function setAwal() {
   game.hero.animJalan = dataGambar.run;
   game.hero.animJatuh = dataGambar.fall;
   game.hero.animMati = dataGambar.hit;
+  setPlatform(map_1, dataGambar.tileset, 32, game.hero);
+  game.gameOver = ulangiPermainan;
+}
+
+function ulangiPermainan() {
+  game.aktif = true;
+  setAwal();
+  jalankan(gameLoop);
 }
 
 function gameLoop() {
   hapusLayar();
-  if (!game.lompat) {
-    if (game.kanan) {
-      game.hero.img = dataGambar.run;
-      game.hero.skalaX = 1;
-      game.hero.x += 3;
-    } else if (game.kiri) {
-      game.hero.img = dataGambar.run;
-      game.hero.skalaX = -1;
-      game.hero.x -= 3;
-    } else {
-      game.hero.img = dataGambar.idle;
-    }
-    if (game.atas) {
-      game.lompat = true;
-      game.hero.img = dataGambar.jump;
-      game.lompatY = -10;
-    }
-  } else {
-    game.lompatY += 0.5;
-    if (game.lompatY > 0) game.hero.img = dataGambar.fall;
-    game.hero.y += game.lompatY;
-    if (game.kanan) {
-      game.hero.skalaX = 1;
-      game.hero.x += 3;
-    } else if (game.kiri) {
-      game.hero.skalaX = -1;
-      game.hero.x -= 3;
-    }
-    if (game.hero.y >= game.lantai - 32) {
-      game.hero.y = game.lantai - 32;
-      game.lompat = false;
-    }
+  if (game.kanan) {
+    gerakLevel(game.hero, 3, 0);
+  } else if (game.kiri) {
+    gerakLevel(game.hero, -3, 0);
   }
-  loopSprite(game.hero);
+  if (game.atas) {
+    gerakLevel(game.hero, 0, -10);
+  }
+  buatLevel();
 }
