@@ -1,5 +1,6 @@
 setGame("1200x600");
 game.folder = "assets";
+
 //file gambar yang dipakai dalam game
 var gambar = {
   logo: "logo.png",
@@ -8,7 +9,7 @@ var gambar = {
   playBtn: "btn-play.png",
   maxBtn: "maxBtn.png",
   minBtn: "minBtn.png",
-  idle: "Idle (32x32).png",
+  idle: "Idle (32x32) new 7.png",
   run: "Run (32x32).png",
   jump: "Jump (32x32).png",
   fall: "Fall (32x32).png",
@@ -16,6 +17,7 @@ var gambar = {
   tileset: "Terrain (512x512).png",
   bg: "Blue.png",
 };
+
 //file suara yang dipakai dalam game
 var suara = {};
 
@@ -69,5 +71,6 @@ function gameLoop() {
   if (game.atas) {
     gerakLevel(game.hero, 0, -10);
   }
+  latar(dataGambar.bg, 0, 0.5);
   buatLevel();
 }
