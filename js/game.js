@@ -11,7 +11,7 @@ var gambar = {
   minBtn: "minBtn.png",
   idle: "Idle (32x32) new 7.png",
   run: "Run (32x32) new 2.png",
-  jump: "Jump (32x32).png",
+  jump: "Jump (32x32) new 1.png",
   fall: "Fall (32x32).png",
   hit: "Hit (32x32).png",
   tileset: "Terrain (512x512).png",
