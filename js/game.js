@@ -13,7 +13,7 @@ var gambar = {
   run: "Run (32x32) new 2.png",
   jump: "Jump (32x32) new 1.png",
   fall: "Fall (32x32) new 1.png",
-  hit: "Hit (32x32).png",
+  hit: "Hit (32x32) new 1.png",
   tileset: "Terrain (512x512).png",
   bg: "Blue.png",
 };
