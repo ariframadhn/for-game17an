@@ -15,7 +15,7 @@ var gambar = {
   fall: "Fall (32x32) new 1.png",
   hit: "Hit (32x32) new 1.png",
   tileset: "Terrain (512x512).png",
-  bg: "Blue.png",
+  bg: "Blue new 2.png",
 };
 
 //file suara yang dipakai dalam game
@@ -71,6 +71,7 @@ function gameLoop() {
   if (game.atas) {
     gerakLevel(game.hero, 0, -10);
   }
-  latar(dataGambar.bg, 0, 0.5);
+  latar(dataGambar.bg, 0, 0);
   buatLevel();
+  resizeBtn(1150, 50);
 }
