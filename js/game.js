@@ -15,6 +15,7 @@ var gambar = {
   fall: "Fall (32x32) new 1.png",
   hit: "Hit (32x32) new 1.png",
   tileset: "Terrain (512x512).png",
+  tileset1: "map3.png",
   bg: "Blue new 2.png",
   bg1: "Blue.png",
   item1: "items bendera.png",
@@ -58,7 +59,16 @@ function setAwal() {
   game.hero.animMati = dataGambar.hit;
   game.skalaSprite = 2;
   // setPlatform(map_1, dataGambar.tileset, 32, game.hero);
-  setPlatform(this["map_" + game.level], dataGambar.tileset, 32, game.hero);
+  // setPlatform(this["map_" + game.level], dataGambar.tileset, 32, game.hero);
+  if (game.level === 1) {
+    setPlatform(this.map_1, dataGambar.tileset, 32, game.hero);
+  } else if (game.level === 2) {
+    setPlatform(this.map_2, dataGambar.tileset, 32, game.hero);
+  } else if (game.level === 3) {
+    setPlatform(this.map_3, dataGambar.tileset1, 32, game.hero);
+  } else {
+    console.log("Invalid game level");
+  }
   game.gameOver = ulangiPermainan;
   setPlatformItem(1, dataGambar.item1);
   // set musuh
