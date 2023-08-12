@@ -16,6 +16,7 @@ var gambar = {
   hit: "Hit (32x32) new 1.png",
   tileset: "Terrain (512x512).png",
   bg: "Blue new 2.png",
+  bg1: "Blue.png",
   item1: "items bendera.png",
   musuh1Idle: "Idle (32x34).png",
   musuh1Run: "Run (32x34).png",
@@ -94,7 +95,8 @@ function gameLoop() {
   buatLevel();
   resizeBtn(1150, 50);
   cekItem();
-  teks(game.score, 40, 60);
+  teks("Score = " + game.score, 30, 50, "calibra-bold-20pt-left-merah");
+  teks("Level = " + game.level, 30, 80, "calibra-bold-20pt-left-putih");
 }
 
 function cekItem() {
