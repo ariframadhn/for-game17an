@@ -20,6 +20,7 @@ var gambar = {
   musuh1Idle: "Idle (32x34).png",
   musuh1Run: "Run (32x34).png",
   musuh1Hit: "Hit (32x34).png",
+  bendera: "Checkpoint (Flag Idle)(64x64) new.png",
 };
 
 //file suara yang dipakai dalam game
@@ -49,20 +50,26 @@ function halamanCover() {
 
 function setAwal() {
   game.hero = setSprite(dataGambar.idle, 32, 32);
-  game.skalaSprite = 2;
   game.hero.animDiam = dataGambar.idle;
   game.hero.animLompat = dataGambar.jump;
   game.hero.animJalan = dataGambar.run;
   game.hero.animJatuh = dataGambar.fall;
   game.hero.animMati = dataGambar.hit;
-  setPlatform(map_1, dataGambar.tileset, 32, game.hero);
+  game.skalaSprite = 2;
+  // setPlatform(map_1, dataGambar.tileset, 32, game.hero);
+  setPlatform(this["map_" + game.level], dataGambar.tileset, 32, game.hero);
   game.gameOver = ulangiPermainan;
   setPlatformItem(1, dataGambar.item1);
+  // set musuh
   var musuh1 = {};
   musuh1.animDiam = dataGambar.musuh1Idle;
   musuh1.animJalan = dataGambar.musuh1Run;
   musuh1.animMati = dataGambar.musuh1Hit;
   setPlatformEnemy(1, musuh1);
+  // set trigger
+  setPlatformTrigger(1, dataGambar.bendera);
+  console.log(game.level);
+  console.log(map_1);
 }
 
 function ulangiPermainan() {
@@ -94,5 +101,15 @@ function cekItem() {
   if (game.itemID > 0) {
     tambahScore(1);
     game.itemID = 0;
+  }
+  if (game.musuhID != 0) {
+    tambahScore(1);
+    game.musuhID = 0;
+  }
+  if (game.triggerID == 1) {
+    game.triggerID = 0;
+    game.aktif = false;
+    game.level++;
+    setTimeout(ulangiPermainan, 2000);
   }
 }
