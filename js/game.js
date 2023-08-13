@@ -43,7 +43,9 @@ function startScreen() {
   if (tekan(startBtn)) {
     jalankan(halamanCover);
   }
-  // mainkanSuara(dataSuara.bgs);
+  game.musikAkitf = true;
+  musik(dataSuara.bgs);
+  game.musik.play();
 }
 function halamanCover() {
   hapusLayar("#67d2d6");
@@ -74,6 +76,7 @@ function setAwal() {
     setPlatform(this.map_2, dataGambar.tileset, 32, game.hero);
   } else if (game.level === 3) {
     setPlatform(this.map_3, dataGambar.tileset1, 32, game.hero);
+    game.musik.stop();
     mainkanSuara(dataSuara.bgm3);
   } else {
     console.log("Invalid game level");
