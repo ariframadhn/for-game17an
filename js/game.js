@@ -23,11 +23,11 @@ var gambar = {
   musuh1Run: "Run (32x34).png",
   musuh1Hit: "Hit (32x34).png",
   bendera: "Checkpoint (Flag Idle)(64x64) new.png",
-  // sound11: "sound map3.mp3",
 };
 
 //file suara yang dipakai dalam game
 var suara = {
+  bgs: "sound start.mp3",
   bgm1: "",
   bgm2: "",
   bgm3: "sound map3.mp3",
@@ -43,6 +43,7 @@ function startScreen() {
   if (tekan(startBtn)) {
     jalankan(halamanCover);
   }
+  // mainkanSuara(dataSuara.bgs);
 }
 function halamanCover() {
   hapusLayar("#67d2d6");
@@ -66,23 +67,11 @@ function setAwal() {
   // setPlatform(map_1, dataGambar.tileset, 32, game.hero);
   // setPlatform(this["map_" + game.level], dataGambar.tileset, 32, game.hero);
 
-  // if (game.level === 1) {
-  //   setPlatform(this.map_1, dataGambar.tileset, 32, game.hero);
-  // } else if (game.level === 2) {
-  //   setPlatform(this.map_2, dataGambar.tileset, 32, game.hero);
-  // } else if (game.level === 3) {
-  //   setPlatform(this.map_3, dataGambar.tileset1, 32, game.hero);
-  // } else {
-  //   console.log("Invalid game level");
-  // }
-
   // Contoh penggunaan di dalam kode Anda
   if (game.level === 1) {
     setPlatform(this.map_1, dataGambar.tileset, 32, game.hero);
-    mainkanSuara(dataSuara.bgm1);
   } else if (game.level === 2) {
     setPlatform(this.map_2, dataGambar.tileset, 32, game.hero);
-    mainkanSuara(dataSuara.bgm2);
   } else if (game.level === 3) {
     setPlatform(this.map_3, dataGambar.tileset1, 32, game.hero);
     mainkanSuara(dataSuara.bgm3);
@@ -134,11 +123,11 @@ function gameLoop() {
 
 function cekItem() {
   if (game.itemID > 0) {
-    tambahScore(1);
+    tambahScore(20);
     game.itemID = 0;
   }
   if (game.musuhID != 0) {
-    tambahScore(1);
+    tambahScore(15);
     game.musuhID = 0;
   }
   if (game.triggerID == 1) {
