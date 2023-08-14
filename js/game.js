@@ -23,13 +23,14 @@ var gambar = {
   musuh1Run: "Run (32x34).png",
   musuh1Hit: "Hit (32x34).png",
   bendera: "Checkpoint (Flag Idle)(64x64) new.png",
+  logo2: "tampilan awal 1.jpg",
+  logo3: "tampilan awal 2.png",
+  quitBtn: "tombolquit.png",
 };
 
 //file suara yang dipakai dalam game
 var suara = {
   bgs: "sound start.mp3",
-  bgm1: "",
-  bgm2: "",
   bgm3: "sound map3.mp3",
 };
 
@@ -38,10 +39,16 @@ loading(gambar, suara, startScreen);
 
 function startScreen() {
   hapusLayar("#67d2d6");
-  tampilkanGambar(dataGambar.logo, 600, 250);
-  var startBtn = tombol(dataGambar.startBtn, 600, 350);
+  // tampilkanGambar(dataGambar.logo1)
+  tampilkanGambar(dataGambar.logo2, 600, 300);
+  var startBtn = tombol(dataGambar.startBtn, 1050, 350);
+  var quitBtn = tombol(dataGambar.quitBtn, 150, 350);
+  resizeBtn(1150, 50);
   if (tekan(startBtn)) {
     jalankan(halamanCover);
+  }
+  if (tekan(quitBtn)) {
+    alert("belum juga main bang :(");
   }
   game.musikAkitf = true;
   musik(dataSuara.bgs);
@@ -49,7 +56,7 @@ function startScreen() {
 }
 function halamanCover() {
   hapusLayar("#67d2d6");
-  gambarFull(dataGambar.cover);
+  gambarFull(dataGambar.logo3);
   var playBtn = tombol(dataGambar.playBtn, 1100, 500);
   if (tekan(playBtn)) {
     setAwal();
